@@ -1,0 +1,40 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install langgraph  # for the langgraph integration demo
+
+      - name: Run test suite
+        run: |
+          python tests/test_extractor.py
+          python tests/test_merge.py
+          python tests/test_agent.py
+          python tests/test_benchmark.py
+
+      - name: Run benchmark (sanity check)
+        run: |
+          python examples/run_benchmark.py | tail -15

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "LARS: Live Adaptive Reasoning System"
+version: 0.4.0
+date-released: 2026-06-12
+license: MIT
+repository-code: "https://github.com/Skyhosteg/LARS"
+type: software
+
+authors:
+  - family-names: "Salah"
+    given-names: "Mohamed"
+    affiliation: "Unaffiliated Researcher, Egypt"
+
+keywords:
+  - llm-agents
+  - stateful-ai
+  - interactive-reasoning
+  - chain-of-thought
+  - continuous-interruption
+  - human-in-the-loop
+  - reasoning-preservation
+
+references:
+  - type: article
+    title: "LARS: Live Adaptive Reasoning System for Continuous-State Interactive AI"
+    authors:
+      - family-names: "Salah"
+        given-names: "Mohamed"
+    year: 2026
+    month: 6
+    doi: "10.5281/zenodo.20618761"
+    url: "https://zenodo.org/records/20618761"
+    license: "CC-BY-4.0"
