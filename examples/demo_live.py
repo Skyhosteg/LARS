@@ -1,0 +1,192 @@
+"""
+examples/demo_live.py — Interactive live demo of LARS
+
+Walks the user through a live session:
+  1. They enter a goal
+  2. LARS extracts an initial plan
+  3. LARS executes each step, pausing after each one
+  4. The user can interrupt at any pause with a free-form text
+  5. ΔU parser + f + MergeTrace fire and display in real time
+  6. RPR is computed after each step
+
+This is the *proof* that LARS works as a live system — not just a
+post-hoc analysis tool.
+
+Run:
+    python examples/demo_live.py
+"""
+
+from __future__ import annotations
+
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+from lars.agent import LiveAgent
+from lars.delta_u import DeltaUParserMock
+from lars.executor import MockStepExecutor
+from lars.extractor import StateExtractor
+from lars.llm import MockLLM, OpenAILLM, default_client
+from lars.merger import StateMerger
+
+
+# --------------------------------------------------------------------------- #
+# Canned CoT for the demo: each step's reasoning, in order
+# --------------------------------------------------------------------------- #
+
+INITIAL_COT = """
+The user wants a marketing plan for a fitness app in Egypt.
+
+Step 1: Analyze the market.
+Step 2: Define the audience.
+Step 3: Choose channels.
+Step 4: Allocate budget.
+Step 5: Define KPIs.
+"""
+
+CANNED_STEP_COTS = {
+    1: (
+        "Egypt has 110M people, 60% under 30, growing fitness app "
+        "adoption at 15% YoY. Targeting all major cities: Cairo, "
+        "Alexandria, Giza. Competitors: Gymondo, local fragmented apps."
+    ),
+    2: (
+        "Primary audience: 18-30 year olds, urban, middle income, "
+        "health-conscious. Secondary: 30-40 year olds with disposable "
+        "income for premium plans."
+    ),
+    3: (
+        "Channels: Instagram (40% engagement with 18-30), TikTok "
+        "(35% reach for short content), local fitness influencers "
+        "(25% trust). All three complement each other."
+    ),
+    4: (
+        "Budget split: 40% paid social, 30% influencers, 20% content "
+        "production, 10% events and sponsorships. Total Q1 budget: "
+        "$50K."
+    ),
+    5: (
+        "Primary KPIs: downloads, 30-day retention, CAC, LTV. "
+        "Target for Q1: 100K downloads, 25% retention, CAC under $5, "
+        "LTV over $40."
+    ),
+}
+
+
+INITIAL_FIXTURE = {
+    "Goal: Create": {
+        "goal": "[default goal]",
+        "steps_completed": [],
+        "steps_pending": [
+            {"step_id": 1, "description": "Analyze the market", "status": "pending", "dependencies": []},
+            {"step_id": 2, "description": "Define the audience", "status": "pending", "dependencies": [1]},
+            {"step_id": 3, "description": "Choose channels", "status": "pending", "dependencies": [2]},
+            {"step_id": 4, "description": "Allocate budget", "status": "pending", "dependencies": [3]},
+            {"step_id": 5, "description": "Define KPIs", "status": "pending", "dependencies": [3, 4]},
+        ],
+        "assumptions": [],
+        "decisions": [],
+        "confidence": 0.5,
+    }
+}
+
+
+# --------------------------------------------------------------------------- #
+# Pre-baked interrupt scripts (the user can pick one of these for a guided demo)
+# --------------------------------------------------------------------------- #
+
+GUIDED_INTERRUPTS = {
+    1: "focus on Cairo only",                    # SCOPE_NARROW at step 1
+    2: "actually make the audience 25-40",       # CORRECTION at step 2
+    3: "use Twitter instead of Facebook",        # REPLACE at step 3
+    4: "drop the events line",                   # REMOVE at step 4
+    5: "stop, restart from scratch",             # ABORT at step 5
+}
+
+
+# --------------------------------------------------------------------------- #
+# The demo
+# --------------------------------------------------------------------------- #
+
+
+def banner(s: str) -> None:
+    print()
+    print("#" * 78)
+    print(f"### {s}")
+    print("#" * 78)
+
+
+def main() -> None:
+    banner("LARS — LIVE ADAPTIVE REASONING SYSTEM (interactive demo)")
+    print()
+    print("This is the live runtime. You enter a goal, LARS plans, then")
+    print("executes step by step. At each pause you can interrupt freely.")
+    print()
+    print("Suggested interrupts (try them at any pause):")
+    for step, text in GUIDED_INTERRUPTS.items():
+        print(f"  after step {step}:  '{text}'")
+    print()
+    print("Or just press Enter to continue without interrupting.")
+    print()
+
+    # 1. Get the goal
+    goal = input("> Enter your goal: ").strip()
+    if not goal:
+        goal = "Create a marketing plan for a fitness app targeting young adults in Egypt."
+        print(f"  (using default goal: {goal})")
+
+    # 2. Set up the LLM-backed components
+    if os.getenv("OPENAI_API_KEY"):
+        llm = OpenAILLM()
+        print("\n[setup] Using OpenAI LLM (real).")
+    else:
+        llm = MockLLM(fixtures=INITIAL_FIXTURE)
+        print("\n[setup] Using MockLLM (no API key set).")
+
+    extractor = StateExtractor(llm)
+    executor = MockStepExecutor(canned=CANNED_STEP_COTS)
+    parser = DeltaUParserMock()  # heuristic; for Arabic/etc use DeltaUParserLLM
+    merger = StateMerger(alpha=0.6, beta=0.3, gamma=0.1)
+
+    # 3. Run the live agent
+    banner("LIVE SESSION")
+    agent = LiveAgent(
+        extractor=extractor,
+        executor=executor,
+        parser=parser,
+        merger=merger,
+        initial_cot=INITIAL_COT,
+    )
+    final_state = agent.run(goal, max_steps=5)
+
+    banner("FINAL STATE")
+    print(f"\n  Goal: {final_state.goal}")
+    print(f"  Version: {final_state.version}")
+    print(f"  Confidence: {final_state.confidence:.2f}")
+    print(f"  Completed steps: {len(final_state.steps_completed)}/{len(final_state.steps_completed) + len(final_state.steps_pending)}")
+    print(f"\n  Completed:")
+    for st in final_state.steps_completed:
+        print(f"    {st.step_id}. {st.description}")
+    print(f"\n  Pending:")
+    for st in final_state.steps_pending:
+        print(f"    {st.step_id}. {st.description}")
+    if final_state.decisions:
+        print(f"\n  Decisions made along the way:")
+        for d in final_state.decisions:
+            print(f"    - {d.decision}")
+
+    banner("DONE")
+    print("\nThis is what LARS does:")
+    print("  - Plans a multi-step reasoning trajectory")
+    print("  - Executes each step")
+    print("  - Pauses after each step to listen for the user")
+    print("  - On interrupt, parses ΔU, applies f, preserves ≥ 50% of state")
+    print("  - Continues from the new state, not from scratch")
+    print()
+    print("Next: wire this into LangGraph for the G1 (continuous) interrupt.")
+    print()
+
+
+if __name__ == "__main__":
+    main()

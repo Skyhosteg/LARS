@@ -1,0 +1,482 @@
+[
+  {
+    "task_id": "plan-marketing-fitness-egypt",
+    "domain": "planning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.031,
+    "cost_words": 71,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-marketing-fitness-egypt",
+    "domain": "planning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.097,
+    "cost_words": 75,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-marketing-fitness-egypt",
+    "domain": "planning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.059,
+    "cost_words": 75,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-marketing-fitness-egypt",
+    "domain": "planning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.617,
+    "cost_words": 71,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-trip-japan",
+    "domain": "planning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.024,
+    "cost_words": 60,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-trip-japan",
+    "domain": "planning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.058,
+    "cost_words": 67,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-trip-japan",
+    "domain": "planning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.05,
+    "cost_words": 67,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-trip-japan",
+    "domain": "planning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.19,
+    "cost_words": 60,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-curriculum-python",
+    "domain": "planning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.022,
+    "cost_words": 52,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-curriculum-python",
+    "domain": "planning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.088,
+    "cost_words": 59,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-curriculum-python",
+    "domain": "planning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.045,
+    "cost_words": 59,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-curriculum-python",
+    "domain": "planning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.129,
+    "cost_words": 52,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-product-launch",
+    "domain": "planning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.052,
+    "cost_words": 49,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-product-launch",
+    "domain": "planning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.064,
+    "cost_words": 54,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-product-launch",
+    "domain": "planning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.074,
+    "cost_words": 54,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-product-launch",
+    "domain": "planning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.236,
+    "cost_words": 49,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-event-conference",
+    "domain": "planning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.029,
+    "cost_words": 66,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-event-conference",
+    "domain": "planning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.052,
+    "cost_words": 69,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-event-conference",
+    "domain": "planning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.112,
+    "cost_words": 69,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-event-conference",
+    "domain": "planning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.253,
+    "cost_words": 66,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-diet-vegetarian",
+    "domain": "planning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.02,
+    "cost_words": 48,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "plan-diet-vegetarian",
+    "domain": "planning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.053,
+    "cost_words": 54,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-diet-vegetarian",
+    "domain": "planning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.051,
+    "cost_words": 54,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "plan-diet-vegetarian",
+    "domain": "planning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.126,
+    "cost_words": 48,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-causal-economic",
+    "domain": "reasoning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.02,
+    "cost_words": 69,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-causal-economic",
+    "domain": "reasoning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.049,
+    "cost_words": 75,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-causal-economic",
+    "domain": "reasoning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.061,
+    "cost_words": 75,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-causal-economic",
+    "domain": "reasoning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.134,
+    "cost_words": 69,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-comparative-languages",
+    "domain": "reasoning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.022,
+    "cost_words": 62,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-comparative-languages",
+    "domain": "reasoning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.056,
+    "cost_words": 67,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-comparative-languages",
+    "domain": "reasoning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.103,
+    "cost_words": 67,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-comparative-languages",
+    "domain": "reasoning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.223,
+    "cost_words": 62,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-debug-code",
+    "domain": "reasoning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.019,
+    "cost_words": 61,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-debug-code",
+    "domain": "reasoning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.045,
+    "cost_words": 71,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-debug-code",
+    "domain": "reasoning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.043,
+    "cost_words": 71,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-debug-code",
+    "domain": "reasoning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.121,
+    "cost_words": 61,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-probability-cards",
+    "domain": "reasoning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.02,
+    "cost_words": 46,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-probability-cards",
+    "domain": "reasoning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.044,
+    "cost_words": 48,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-probability-cards",
+    "domain": "reasoning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.043,
+    "cost_words": 48,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-probability-cards",
+    "domain": "reasoning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.113,
+    "cost_words": 46,
+    "used_interrupt": true,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-ethics-trolley",
+    "domain": "reasoning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.19,
+    "cost_words": 109,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-ethics-trolley",
+    "domain": "reasoning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.055,
+    "cost_words": 113,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-ethics-trolley",
+    "domain": "reasoning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.085,
+    "cost_words": 113,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-ethics-trolley",
+    "domain": "reasoning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.272,
+    "cost_words": 109,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-systems-feedback",
+    "domain": "reasoning",
+    "method": "no_interrupt",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.018,
+    "cost_words": 56,
+    "used_interrupt": false,
+    "intent_matched": true
+  },
+  {
+    "task_id": "reason-systems-feedback",
+    "domain": "reasoning",
+    "method": "restart_from_scratch",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.075,
+    "cost_words": 60,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-systems-feedback",
+    "domain": "reasoning",
+    "method": "langgraph_checkpoint",
+    "rpr_semantic": 0.0,
+    "latency_ms": 0.058,
+    "cost_words": 60,
+    "used_interrupt": true,
+    "intent_matched": false
+  },
+  {
+    "task_id": "reason-systems-feedback",
+    "domain": "reasoning",
+    "method": "lars",
+    "rpr_semantic": 1.0,
+    "latency_ms": 0.149,
+    "cost_words": 56,
+    "used_interrupt": true,
+    "intent_matched": false
+  }
+]
