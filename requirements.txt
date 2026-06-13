@@ -1,0 +1,5 @@
+# LARS — Live Adaptive Reasoning System
+# Core deps for the S(t) Extractor + RPR metric
+
+pydantic>=2.5.0
+openai>=1.40.0

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lars-reasoning"
+version = "0.4.0"
+description = "Live Adaptive Reasoning System — preserve reasoning under continuous user interruption"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Mohamed Salah", email = "ph.net.sa@gmail.com"},
+]
+keywords = ["llm", "agents", "reasoning", "chain-of-thought", "interruption", "human-in-the-loop"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.5.0",
+    "openai>=1.40.0",
+]
+
+[project.optional-dependencies]
+langgraph = ["langgraph>=0.0.30"]
+dev = [
+    "pytest>=7.0",
+    "pdfplumber>=0.10",
+]
+
+[project.urls]
+Paper = "https://zenodo.org/records/20618761"
+Homepage = "https://github.com/Skyhosteg/LARS"
+Issues = "https://github.com/Skyhosteg/LARS/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lars*"]
+exclude = ["tests*", "examples*", "docs*"]
