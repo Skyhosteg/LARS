@@ -61,6 +61,9 @@ git clone https://github.com/Skyhosteg/LARS.git
 cd LARS
 pip install -r requirements.txt
 
+# Optional: for LangGraph deployment
+# pip install langgraph
+
 # Run the live interactive demo (mock LLM)
 python examples/demo_live.py
 ```
@@ -70,6 +73,30 @@ interrupt — the system parses your input, applies the merge, and continues
 from the new state.
 
 ### With a real LLM (OpenRouter / OpenAI)
+
+```powershell
+# PowerShell
+$env:OPENROUTER_API_KEY = "sk-or-v1-..."
+$env:OPENROUTER_MODEL = "openai/gpt-4o-mini"
+python examples/demo_live.py
+```
+
+```bash
+# bash / zsh
+export OPENAI_API_KEY=sk-...
+python examples/demo_live.py
+```
+
+### With LangGraph (optional)
+
+```bash
+pip install langgraph
+python -m lars.langgraph_integration
+```
+
+The LangGraph wiring is a 50-line graph (`lars/langgraph_integration.py`)
+that exposes `interrupt_before=["execute_step"]` for production deployment
+with persistence and time-travel.
 
 ```powershell
 # PowerShell

@@ -208,7 +208,7 @@ def main() -> None:
     print("  - Continues from the new state, not from scratch")
     print()
     print("Next steps for you:")
-    print("  - LangGraph deployment:  see lars/langgraph_integration.py")
+    print("  - LangGraph deployment:  pip install langgraph && python -m lars.langgraph_integration")
     print("  - Full 12-task benchmark: python examples/run_benchmark.py")
     print("  - Run all 33 tests:      python tests/test_merge.py && python tests/test_extractor.py && python tests/test_agent.py && python tests/test_benchmark.py")
     print("  - Read the v3 paper:     see lars_v3_paper.md")
