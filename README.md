@@ -40,7 +40,7 @@ S(t + 1) = f(S(t), ∆U(t))
 - `∆U(t)` — the user's interrupt, classified into one of 9 typed intents
 - `f` — a weighted merge with `α + β + γ = 1, α ≥ 0.5`
 
-**Paper**: [LARS: Live Adaptive Reasoning System for Continuous-State Interactive AI](https://zenodo.org/records/20618761) (Salah, 2026, DOI: 10.5281/zenodo.20618761)
+**Paper**: [LARS: Live Adaptive Reasoning System for Continuous-State Interactive AI](https://zenodo.org/records/20618761) (Salah, 2026, DOI: 10.5281/zenodo.20618761) — v3 with real-LLM validation on `gpt-4o-mini` and 3-layer defense pipeline (see `lars_v3_paper.md` in this repo).
 
 ---
 
@@ -162,6 +162,7 @@ All 28 tests should pass.
   month  = jun,
   doi    = {10.5281/zenodo.20618761},
   url    = {https://zenodo.org/records/20618761},
+  note   = {v3 with real-LLM validation; see also the lars_v3_paper.md in this repo for the 3-layer defense pipeline},
 }
 ```
 
